@@ -12,16 +12,16 @@ const orderItemSchema = new mongoose.Schema({
 })
 
 const productSchema = new mongoose.Schema({
-    description:{
-        type:String,
-        requried: true,
+    productImage:{
+        type:String
     },
     name:{
         type:String,
         requried: true,
     },
-    productImage:{
-        type:String
+    description:{
+        type:String,
+        requried: true,
     },
     price:{
         type:Number,
@@ -30,19 +30,6 @@ const productSchema = new mongoose.Schema({
     stock:{
         type:Number,
         default:0,        
-    },
-    category:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Category",
-        required:true
-    },
-    owner:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"User",
-        requried:true
-    },
-    orderItems:{
-        type:[orderItemSchema]
     },
     address:{
         type:String,
@@ -53,6 +40,19 @@ const productSchema = new mongoose.Schema({
         enum:['PENDING',"CANCELED","DELIVERED"],
         default:true,
         reuired:true
+    },
+    orderItems:{
+        type:[orderItemSchema]
+    },
+    owner:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User",
+        requried:true
+    },
+    category:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Category",
+        required:true
     }
 },{timestamps:true});
 
